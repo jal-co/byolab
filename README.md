@@ -2,7 +2,7 @@
 
 # byolab
 
-Build your own lab. A place to build UI components with your coding agent, judge them by hand, and render them as frame-exact films.
+Build your own lab. A place to build UI components with your coding agent, judge them by hand, and render them as frame-exact films or save them for later.
 
 - **Gallery** of everything you've made, with drafts waiting for a keep or toss.
 - **Workbench** for each component, with an anatomy view (skeleton and live measurements) for layout breakdowns.
