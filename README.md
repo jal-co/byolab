@@ -1,0 +1,95 @@
+<img alt="byo-lab" src="https://shieldcn.dev/header/graph.svg?title=byo-lab&subtitle=a+space+for+curating+your+personal+design+taste&mode=dark&align=left&border=false">
+
+# byolab
+
+Build your own lab. A place to build UI components with your coding agent, judge them by hand, and render them as frame-exact films.
+
+- **Gallery** of everything you've made, with drafts waiting for a keep or toss.
+- **Workbench** for each component, with an anatomy view (skeleton and live measurements) for layout breakdowns.
+- **Films** that drive the real component, not a recording: a storyboard of clicks and tweens, rendered frame by frame to mp4 in light and dark.
+- **Taste that compounds.** Every toss asks why, and the reason becomes a rule your agent reads next time.
+- **DialKit built in.** Tune a spring or a radius by hand in the workbench, then hand the numbers back to your agent.
+
+## Start
+
+```bash
+pnpm install
+pnpm exec playwright install chromium   # for rendering
+pnpm dev                                # http://localhost:5420
+```
+
+Rendering needs `ffmpeg` on your PATH.
+
+Then ask your agent for something:
+
+> Make a copy button that shows what it copied.
+
+The agent reads `AGENTS.md`, scaffolds a draft with `pnpm lab new`, builds it, and sends you the link. Try it in the gallery, then keep it or toss it with a reason.
+
+![Tossing a draft with a reason](docs/media/toss.gif)
+
+See [Judging work](docs/judging.md) for how keep and toss work, and how to write notes that make the next draft better.
+
+## Commands
+
+Every command is built for agents first: plain arguments, clear errors, and `--json` output.
+
+```bash
+pnpm lab new <slug> [--kind component|explainer|breakdown] [--name ".."] [--idea ".."] [--size 480x320]
+pnpm lab list
+pnpm lab keep <slug>
+pnpm lab toss <slug> --reason "spacing is too loose"
+pnpm lab grid <slug>                      # spacing, radius, and type limits from GRID.md
+pnpm lab check <film>                     # film is frame-exact
+pnpm lab still <film> <seconds>
+pnpm lab render <film> [--theme light|dark] [--height 2160] [--no-sound]
+pnpm lab export <film> [--theme both]     # → exports/<film>/
+```
+
+## Kinds
+
+| Kind | What it is |
+| --- | --- |
+| `component` | One component with one interaction worth trying and watching. |
+| `explainer` | One instance plays the same input with a detail off, then on, and the hidden mechanism is drawn in. Full bleed, portrait. |
+| `breakdown` | How the parts of a layout relate, with a skeleton, guides, and live measurements. |
+
+## Tuning with DialKit
+
+[DialKit](https://github.com/joshpuckett/dialkit) is wired into the workbench, and the component starter already uses it:
+
+```tsx
+const dial = useDialKit('Seat stepper', {
+  radius: [24, 8, 32, 8],
+  fill: { type: 'spring', visualDuration: 0.4, bounce: 0.2 },
+})
+```
+
+![Dragging the Radius, Padding, and Gap dials in the DialKit panel while the Seat stepper card updates live](docs/media/tune.gif)
+
+Open the component at `#/s/<slug>`, drag the controls in the panel, then press **Copy** and paste the values to your agent. It bakes them into the component as plain constants. The panel only shows in `pnpm dev`, and films use the baked values, so renders stay exact.
+
+## Make it yours
+
+- **`TASTE.md`** is your rules. It starts with sensible defaults; replace them as you judge work.
+- **`GRID.md`** sets the spacing, radius, and type limits that `pnpm lab grid` checks.
+- **`src/index.css`** holds the theme tokens and elevation scale. Change the look there.
+- **`.agents/skills/`** teaches your agent the workflows. Edit them like any other file.
+- **`LEDGER.md`** appears after your first keep or toss and records every verdict.
+
+## Layout
+
+```
+src/specimens/<slug>/   kept work: index.ts, <slug>.tsx, film.ts
+src/drafts/<slug>/      drafts waiting to be judged
+src/films/<slug>/       films that aren't tied to one component
+src/film/               the film engine
+src/lab/                the gallery and workbench
+scripts/                the lab CLI and renderer
+```
+
+The lab ships empty. `pnpm lab new` writes a working starter for each kind, so your first draft is one command away.
+
+## License
+
+MIT
