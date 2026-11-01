@@ -12,6 +12,12 @@ Build your own lab. A place to build UI components with your coding agent, judge
 
 ## Start
 
+Make your own copy (**Use this template** on GitHub, or clone it), open it with your agent, and ask:
+
+> what do I do?
+
+It checks your setup, starts the lab, and walks you through your first component. Or do it by hand:
+
 ```bash
 pnpm install
 pnpm exec playwright install chromium   # for rendering
@@ -69,6 +75,14 @@ const dial = useDialKit('Seat stepper', {
 
 Open the component at `#/s/<slug>`, drag the controls in the panel, then press **Copy** and paste the values to your agent. It bakes them into the component as plain constants. The panel only shows in `pnpm dev`, and films use the baked values, so renders stay exact.
 
+## Updating
+
+byolab ships releases as tags (`v0.1.0`, ...) with notes in [CHANGELOG.md](CHANGELOG.md). To pull one into your lab, ask your agent:
+
+> update my lab
+
+It fetches the new release, tells you what changed, and patches the engine on a branch. Your taste, ledger, theme, and components are left alone.
+
 ## Make it yours
 
 - **`TASTE.md`** is your rules. It starts with sensible defaults; replace them as you judge work.
@@ -76,6 +90,7 @@ Open the component at `#/s/<slug>`, drag the controls in the panel, then press *
 - **`src/index.css`** holds the theme tokens and elevation scale. Change the look there.
 - **`.agents/skills/`** teaches your agent the workflows. Edit them like any other file.
 - **`LEDGER.md`** appears after your first keep or toss and records every verdict.
+- **`CHANGELOG.md`** is byolab's own release notes. Leave it as is so updates know where you're coming from.
 
 ## Layout
 

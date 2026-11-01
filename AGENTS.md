@@ -23,10 +23,13 @@ A design lab you build with an agent. It holds:
 - UI uses the shadcn components in `src/components/ui` and the tokens in `src/index.css`. Change the theme there, not per component. Icons come from `lucide-react`.
 - Read a still after rendering it. "It rendered" is not "it looks right".
 - DialKit (`dialkit`) is installed for live tuning. Use `useDialKit` while values are being tuned, and bake the final numbers into plain constants before a film is called done, because films must be deterministic.
+- The lab's version is `version` in `package.json`; releases and what to do about them are in `CHANGELOG.md`.
 - Ask before adding a dependency.
 
 | Task | Load |
 | --- | --- |
+| Owner asks what to do, how it works, or is new | `.agents/skills/lab-start/SKILL.md` |
+| Update or upgrade the lab, or "what changed" | `.agents/skills/lab-update/SKILL.md` |
 | Build or refine a component | `.agents/skills/lab-component/SKILL.md` |
 | Without-versus-with explainer | `.agents/skills/lab-explainer/SKILL.md` |
 | Make, retime, or render a film | `.agents/skills/lab-film/SKILL.md` |
