@@ -10,6 +10,8 @@ Build your own lab. A place to build UI components with your coding agent, judge
 - **Taste that compounds.** Every toss asks why, and the reason becomes a rule your agent reads next time.
 - **DialKit built in.** Tune a spring or a radius by hand in the workbench, then hand the numbers back to your agent.
 
+This is a blank canvas. It starts from my opinions (a grid, a theme, a few taste rules) so it works out of the box, but it's meant to become yours. No skill gives you taste. You are the skill.
+
 ## Start
 
 Make your own copy (**Use this template** on GitHub, or clone it), open it with your agent, and ask:
@@ -62,7 +64,7 @@ pnpm lab export <film> [--theme both]     # → exports/<film>/
 
 ## Tuning with DialKit
 
-[DialKit](https://github.com/joshpuckett/dialkit) is wired into the workbench, and the component starter already uses it:
+[DialKit](https://github.com/joshpuckett/dialkit) by [@joshpuckett](https://x.com/joshpuckett) is wired into the workbench, and the component starter already uses it:
 
 ```tsx
 const dial = useDialKit('Seat stepper', {
@@ -84,6 +86,15 @@ byolab ships releases as tags (`v0.1.0`, ...) with notes in [CHANGELOG.md](CHANG
 It fetches the new release, tells you what changed, and patches the engine on a branch. Your taste, ledger, theme, and components are left alone.
 
 ## Make it yours
+
+Ask your agent to change any of it. A few places to start:
+
+- **Bring your skills.** Add your favorite UI skills to `.agents/skills/`, and your agent uses them when it builds.
+- **Use your components.** Tell it to build on a certain [shadcn](https://ui.shadcn.com) component or theme, or your own design system.
+- **Set your grid.** The lab starts from a grid, an idea from [@MSchwaibold](https://x.com/MSchwaibold). Tune `GRID.md`, or ask your agent to fit it to your aesthetic.
+- **Test other viewports.** Ask your agent to add [knobs](https://knobs.dev) by [@mertduzgun](https://x.com/mertduzgun) to try devices, locales, and times.
+
+The files that hold it all:
 
 - **`TASTE.md`** is your rules. It starts with sensible defaults; replace them as you judge work.
 - **`GRID.md`** sets the spacing, radius, and type limits that `pnpm lab grid` checks.

@@ -27,6 +27,7 @@ The owner may have never used the lab. Walk them through one real loop instead o
 4. **Ask what they want to make first.** If they have no idea, offer three small, practical ones (a copy button that shows what it copied, a seat stepper whose total updates, an invite link with a visible expiry) and let them pick.
 5. **Build it** with the `lab-component` skill and send the link.
 6. **Teach the note on their first verdict.** If they toss with something vague like "looks bad", ask which part and what's wrong with it, then run `pnpm lab toss` with their sharper words. Point them at `docs/judging.md` once, not every time.
-7. **Show the rest only when it's relevant:** films after their first keep (`pnpm lab still <slug> 2`), DialKit when they want to tweak motion or spacing, `pnpm lab grid` when spacing comes up.
+7. **Offer to make it theirs** once they've judged a couple of drafts: their favorite UI skills in `.agents/skills/`, a shadcn component set or theme to build on, their own grid in `GRID.md`, or [knobs](https://knobs.dev) for testing viewports, locales, and times. The defaults are one person's taste, and the lab works best once it reflects theirs.
+8. **Show the rest only when it's relevant:** films after their first keep (`pnpm lab still <slug> 2`), DialKit when they want to tweak motion or spacing, `pnpm lab grid` when spacing comes up.
 
 </workflow>
